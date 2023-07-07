@@ -2,6 +2,7 @@ package org.example;
 //Пусть дан произвольный список целых чисел.
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.Random;
 
@@ -15,8 +16,12 @@ public class Main {
         ArrayList<Integer> list = new ArrayList<>();
         Random rand = new Random();
         for(int i = 0; i < 10; i++) {list.add(rand.nextInt(10));}
+        System.out.println(list);
         DeleteEvenNumbers(list);
         System.out.println(list);
+        System.out.println(GetMaxValue(list));
+        System.out.println(GetMinValue(list));
+        System.out.println(GetArithmeticMeanValue(list));
     }
     static ArrayList DeleteEvenNumbers(ArrayList list) //Не указали тип, можем получать любые списки))
     {
@@ -38,21 +43,24 @@ public class Main {
 //      return list;
     }
 
-    static int GetMaxValue(ArrayList list)
+    static int GetMaxValue(ArrayList<Integer> list)
     {
-        int value = 0;
+        int value = list.get(0);
+        for(Integer num : list) {if(num > value) {value = num;}}
         return value;
     }
 
-    static int GetMinValue(ArrayList list)
+    static int GetMinValue(ArrayList<Integer> list)
     {
-        int value = 0;
+        int value = list.get(0);
+        for(Integer num : list) {if(num < value) {value = num;}}
         return value;
     }
 
-    static int GetArithmeticMeanValue(ArrayList list)
+    static double GetArithmeticMeanValue(ArrayList<Integer> list)
     {
         int value = 0;
-        return value;
+        for(Integer num : list){value += num;}
+        return (double)value / list.size();
     }
 }
