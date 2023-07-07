@@ -17,31 +17,40 @@ public class Main {
     {
         ArrayList<Integer> list = new ArrayList<>();
         Random rand = new Random();
-        for(int i = 0; i < 10; i++) {list.add(rand.nextInt(10));}
-        System.out.println(list);
+        for(int i = 0; i < 100000; i++) {list.add(rand.nextInt(10));}
+//        System.out.println(list);
+
         DeleteEvenNumbers(list);
-        System.out.println(list);
-        System.out.println(GetMaxValue(list));
-        System.out.println(GetMinValue(list));
-        System.out.println(GetArithmeticMeanValue(list));
+//        System.out.println(list);
+//        System.out.println(GetMaxValue(list));
+//        System.out.println(GetMinValue(list));
+//        System.out.println(GetArithmeticMeanValue(list));
     }
     static ArrayList DeleteEvenNumbers(ArrayList list) //Не указали тип, можем получать любые списки))
     {
+        long startTime = System.nanoTime();
         int index = 0;
         while (index < list.size())
         {
             if ((int) list.get(index) % 2 == 0) {list.remove(index);}
             else {index++;}
         }
+        long endTime = System.nanoTime();
+        long timeElapsed = endTime - startTime;
+        System.out.println("Execution time in milliseconds: " + timeElapsed / 1000000);
         return list;
 
         //Интересно что работает быстрее?
 
+//      long startTime = System.nanoTime();
 //      Iterator iterator = list.iterator();
 //      while(iterator.hasNext())
 //      {
 //          if((int)iterator.next() % 2 == 0) {iterator.remove();}
 //      }
+//        long endTime = System.nanoTime();
+//        long timeElapsed = endTime - startTime;
+//        System.out.println("Execution time in milliseconds: " + timeElapsed / 1000000);
 //      return list;
     }
 
