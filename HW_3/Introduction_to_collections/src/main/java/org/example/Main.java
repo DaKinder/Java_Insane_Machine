@@ -1,10 +1,12 @@
 package org.example;
 //Пусть дан произвольный список целых чисел.
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.Random;
+import java.util.Iterator;
 
 // 1) Нужно удалить из него чётные числа
 // 2) Найти минимальное значение
@@ -61,6 +63,8 @@ public class Main {
     {
         int value = 0;
         for(Integer num : list){value += num;}
+        BigDecimal result = new BigDecimal(value);
+        NumberFormat nf = new DecimalFormat("#.##");
         return (double)value / list.size();
     }
 }
