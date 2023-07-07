@@ -63,8 +63,6 @@ public class Main {
     {
         int value = 0;
         for(Integer num : list){value += num;}
-        BigDecimal result = new BigDecimal(value);
-        NumberFormat nf = new DecimalFormat("#.##");
         return (double)value / list.size();
     }
 }
