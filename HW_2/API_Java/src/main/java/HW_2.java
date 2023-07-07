@@ -19,12 +19,19 @@
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class HW_2 {
     public static void main(String[] args) {
         String strSql = "select * from students where";
         String file = "file.txt";
+        ArrayList<String> list = new ArrayList<String>(2);
+        list.add("Hello");
+        list.add("world");
+        System.out.println(list);
+        System.out.println(list.toString());
 
         char[]fileString = Reader(file);
 
