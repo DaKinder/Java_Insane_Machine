@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Iterator;
 
@@ -12,46 +13,36 @@ import java.util.Iterator;
 // 2) Найти минимальное значение
 // 3) Найти максимальное значение
 // 4) Найти среднее значение
-public class Main {
+public class Main
+{
     public static void main(String[] args)
     {
-        ArrayList<Integer> list = new ArrayList<>();
+        List<Integer> list1 = new ArrayList<>();
+        List<Integer> list2 = new ArrayList<>();
         Random rand = new Random();
-        for(int i = 0; i < 100000; i++) {list.add(rand.nextInt(10));}
-//        System.out.println(list);
+        for(int i = 0; i < 10; i++) {list1.add(rand.nextInt(10));}
 
-        DeleteEvenNumbers(list);
-//        System.out.println(list);
+        List<Integer> temp = new ArrayList<>();
+        for(int i = 0; i < list1.size(); i++)
+        {
+            list2.add(list1.get(i));
+        }
+
+        long startTime = System.nanoTime();
+        System.out.println(DeleteEvenNumbers(list1, temp));
+        long endTime = System.nanoTime();
+        long timeElapsed = endTime - startTime;
+        System.out.println("Execution time in milliseconds: " + timeElapsed / 1000000);
+
+        System.out.println(list1);
 //        System.out.println(GetMaxValue(list));
 //        System.out.println(GetMinValue(list));
 //        System.out.println(GetArithmeticMeanValue(list));
     }
-    static ArrayList DeleteEvenNumbers(ArrayList list) //Не указали тип, можем получать любые списки))
+    static List DeleteEvenNumbers(List<Integer> list2, List temp)
     {
-        long startTime = System.nanoTime();
-        int index = 0;
-        while (index < list.size())
-        {
-            if ((int) list.get(index) % 2 == 0) {list.remove(index);}
-            else {index++;}
-        }
-        long endTime = System.nanoTime();
-        long timeElapsed = endTime - startTime;
-        System.out.println("Execution time in milliseconds: " + timeElapsed / 1000000);
-        return list;
-
-        //Интересно что работает быстрее?
-
-//      long startTime = System.nanoTime();
-//      Iterator iterator = list.iterator();
-//      while(iterator.hasNext())
-//      {
-//          if((int)iterator.next() % 2 == 0) {iterator.remove();}
-//      }
-//        long endTime = System.nanoTime();
-//        long timeElapsed = endTime - startTime;
-//        System.out.println("Execution time in milliseconds: " + timeElapsed / 1000000);
-//      return list;
+        for (int i = 0; i < list2.size(); i++) {if (list2.get(i) % 2 != 0) {temp.add(list2.get(i));}}
+        return temp;
     }
 
     static int GetMaxValue(ArrayList<Integer> list)
